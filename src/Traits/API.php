@@ -27,4 +27,13 @@ trait API
 
         return $this->sendRequest('post', 'addInvoice', $data, $token);
     }
+
+    public function getInvoice(string $transactionNo)
+    {
+        if (! $token = $this->getAccessToken()) {
+            $token = $this->authorize();
+        }
+
+        return $this->sendRequest('get', "getInvoice/${transactionNo}", [], $token);
+    }
 }
