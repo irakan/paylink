@@ -12,16 +12,16 @@ composer require irakan/paylink
 $client = new \Paylink\Client();
 $client->setVendorId('4444');
 $client->setVendorSecret('ABC');
-$client->setPersistToken(false);
-$client->setEnvironment('prod');
+$client->setPersistToken(true); // false by default if not given
+$client->setEnvironment('prod'); // testing by default if not given
 
 Or
 
 $client = new \Paylink\Client([
 	'vendorId'  =>  '4444',
 	'vendorSecret'  =>  'ABC',
-	'persistToken'  =>  true,
-	'environment'  =>  'testing',
+	'persistToken'  =>  true, // false by default if not given
+	'environment'  =>  'testing', // testing by default if not given
 ]);
 
  $data = [
@@ -45,5 +45,8 @@ $client = new \Paylink\Client([
         
  
 $response = $client->createInvoice($data); 
-// Get the invoice url from the response
+// Get the invoice url from the response => $response['url']
+
+$response = $client->getInvoice($transactionNo); 
+// Check the invoice status from the response => $response['orderStatus']
 ```
