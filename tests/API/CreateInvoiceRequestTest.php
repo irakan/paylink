@@ -77,8 +77,6 @@ class CreateInvoiceRequestTest extends TestCase
         $mock->expects($this->exactly(1))->method('getAccessToken')->willReturn(null);
         $mock->expects($this->exactly(1))->method('authorize');
 
-        $mock->expects($this->exactly(1))->method('authorize');
-
         $mock->createInvoice([]);
     }
 }
